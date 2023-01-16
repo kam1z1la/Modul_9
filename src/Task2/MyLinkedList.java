@@ -1,21 +1,25 @@
 package Task2;
 
-class MyLinkedList<T>  {
-      Nodes<T> head;
+class MyLinkedList<T> {
+     Nodes<T> head;
+     Nodes<T> last;
      int counter = 0;
      MyLinkedList(){
           head = null;
+          last = null;
      }
      public void add(T value){
      Nodes<T> node = new Nodes<>(value);
      Nodes<T> secondNode = head;
-     if(head==null){
-          head = (Nodes<T>) node.getNext();
-       } else while(secondNode.getNext() != null){
-         secondNode = (Nodes<T>) secondNode.getNext();
+     if(head == null){
+          head =  node;
+       } else {
+         while (secondNode.getNext() != null) {
+             last = secondNode;
+         }
+         last = node;
+         counter++;
        }
-         secondNode = node;
-       counter++;
      }
 
      public static void main(String[] args) {
