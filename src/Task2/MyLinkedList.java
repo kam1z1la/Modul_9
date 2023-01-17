@@ -20,20 +20,24 @@ class MyLinkedList<T> {
         }
     }
 
-    public void print(){
-        StringBuilder write = new StringBuilder();
-        Nodes<T> node = head;
-        if(node == null){
-            write.append("Head null");
-        } else while(node.next != null){
-            node = node.next;
-            write.append(node.item);
-        }
+    @Override
+    public String toString() {
+            StringBuilder write = new StringBuilder();
+            Nodes<T> node = head;
+            if(node == null){
+                write.append("Head null");
+            } else while(node != null){
+                write.append(node.item).append("\t");
+                node = node.next;
+            }
+            return write.toString();
     }
 
     public static void main(String[] args) {
         MyLinkedList<Integer> list = new MyLinkedList<>();
         list.add(1);
-        list.print();
+        list.add(1);
+        list.add(1);
+        System.out.println(list);
     }
 }
