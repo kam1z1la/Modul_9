@@ -87,6 +87,7 @@ class MyLinkedList<T> {
         while (head != null & counter != 0) {
             node.next = null;
             node.item = null;
+            head = null;
             counter--;
         }
     }
