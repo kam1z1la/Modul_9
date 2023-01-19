@@ -33,7 +33,7 @@ class MyLinkedList<T> {
             node = node.next;
             step++;
         }
-        return null;
+        throw new IndexOutOfBoundsException();
     }
 
     public T remove(int index) {
@@ -79,7 +79,7 @@ class MyLinkedList<T> {
     }
 
     public int size() {
-        return counter + 1;
+        return counter != 0?counter + 1: 1;
     }
 
     public void clear() {
@@ -102,7 +102,7 @@ class MyLinkedList<T> {
 
         System.out.println("Get by index: " + list.get(0));
 
-        System.out.println("Remove by index: " + list.remove(3));
+        System.out.println("Remove by index: " + list.remove(2));
         System.out.println(list);
 
         System.out.print("Clear: ");
@@ -117,5 +117,10 @@ class MyLinkedList<T> {
 
         System.out.println("Remove by index: " + list1.remove(2));
         System.out.println(list1);
+
+        System.out.print("Clear: ");
+        list1.clear();
+
+        System.out.println("Size: " + list1.size());
     }
 }

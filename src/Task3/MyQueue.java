@@ -1,5 +1,9 @@
 package Task3;
 
+import java.util.ArrayDeque;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+
 class MyQueue<T> {
     Nodes<T> head;
 
@@ -52,12 +56,12 @@ class MyQueue<T> {
         return "[" + show.strip() + "]";
     }
 
-    public T peek(){
+    public Object peek(){
         Nodes<T> node = head;
         if (head != null){
             return  node.item;
         }
-        return null;
+        return 0;
     }
 
     public T poll(){
@@ -75,9 +79,8 @@ class MyQueue<T> {
                 }
                 node = node.next;
             }
-
             if (el == null)
-                return null;
+                 throw new NoSuchElementException();
         }
         size--;
         return el;
@@ -111,5 +114,10 @@ class MyQueue<T> {
         System.out.print("Clear queue: ");
         queue1.clear();
         System.out.println(queue1);
+
+        Queue<Integer> queue2 = new ArrayDeque<>();
+        queue2.peek();
+        queue2.poll();
+        queue2.size();
     }
 }

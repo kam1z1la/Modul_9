@@ -1,23 +1,25 @@
 package Task4;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 
 class MyStack<T> {
 
-     Object[] array;
+    Object[] array;
 
-     MyStack(){
-          array = new Object[0];
-     }
+    MyStack() {
+        array = new Object[0];
+    }
 
     public Object[] push(T value) {
         int size = array.length;
-            size++;
-            Object[] secondArray = Arrays.copyOf(array, size);
-            for (int i = array.length; i < size; i++) {
-                secondArray[i] = value;
-            }
-            return array = Arrays.copyOf(secondArray, size);
+        size++;
+        Object[] secondArray = Arrays.copyOf(array, size);
+        for (int i = array.length; i < size; i++) {
+            secondArray[i] = value;
+        }
+        return array = secondArray;
     }
 
 
@@ -27,41 +29,39 @@ class MyStack<T> {
         int element = 0;
         Object[] secondArray = new Object[size];
         for (int i = 0; i < size; i++) {
-            if (i != index) {
-                secondArray[i] = array[element];
-                element++;
-            } else {
-                element++;
-                secondArray[i] = array[element];
+            if (i == index) {
                 element++;
             }
+            secondArray[i] = array[element];
+            element++;
         }
-        return array = Arrays.copyOf(secondArray, size);
+        return array = secondArray;
     }
 
     public Object[] clear() {
-        Object[] newArray = new Object[0];
-        return array = Arrays.copyOf(newArray, newArray.length);
+        if (array.length != 0)
+            return new Object[0];
+        else throw new UnsupportedOperationException();
     }
 
     public int size() {
         return array.length;
     }
 
-    public Object peek(){
+    public Object peek() {
         for (Object o : array) {
             return o;
         }
         return null;
     }
 
-    public Object pop(){
+    public Object pop() {
         Object el = null;
         for (Object o : array) {
             el = o;
             break;
         }
-       remove(0);
+        remove(0);
         return el;
     }
 
@@ -80,11 +80,13 @@ class MyStack<T> {
         stack.push(6);
 
         System.out.println(stack);
-        System.out.println("Remove by index from stack: "); stack.remove(1);
+        System.out.println("Remove by index from stack: ");
+        stack.remove(1);
         System.out.println(stack);
         System.out.println("Get first element from stack: " + stack.peek());
 
-        System.out.println("Remove by index from stack: "); stack.remove(0);
+        System.out.println("Remove by index from stack: ");
+        stack.remove(0);
         System.out.println(stack);
         System.out.println(stack.peek());
 
@@ -92,7 +94,7 @@ class MyStack<T> {
         System.out.println(stack);
 
         System.out.println("Size: " + stack.size());
-        System.out.println("Clear " + Arrays.toString(stack.clear()));
+//        System.out.println("Clear " + Arrays.toString(stack.clear()));
 
         MyStack<String> stack1 = new MyStack<>();
         stack1.push("A");
@@ -100,9 +102,15 @@ class MyStack<T> {
         stack1.push("D");
         stack1.push("C");
 
-        System.out.println("Remove by index from stack: "); stack1.remove(1);
+        System.out.println("Remove by index from stack: ");
+        stack1.remove(1);
         System.out.println(stack1);
         System.out.println("Get first element from stack: " + stack1.peek());
-        System.out.println("Clear " + Arrays.toString(stack.clear()));
-     }
+//        System.out.println("Clear " + Arrays.toString(stack.clear()));
+
+        Deque<Integer> deque = new ArrayDeque<>();
+        deque.clear();
+        deque.peek();
+        deque.poll();
+    }
 }

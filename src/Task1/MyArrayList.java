@@ -1,27 +1,13 @@
 package Task1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 class MyArrayList {
     private Object[] array;
 
-    MyArrayList(int size) {
-        this.array = new Object[size];
-    }
-
-    public void fillNumbers() {
-        for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(10);
-        }
-    }
-
-    public void fillWords() {
-        StringBuilder string = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            char code = (char) (new Random().nextInt(94) + 33);
-            array[i] = string.append(code);
-        }
+    MyArrayList() {
+        array = new Object[0];
     }
 
     public Object[] add(Object value) {
@@ -29,9 +15,9 @@ class MyArrayList {
         size++;
         Object[] secondArray = Arrays.copyOf(array, size);
         for (int i = array.length; i < size; i++) {
-                secondArray[i] = value;
+            secondArray[i] = value;
         }
-        return array = Arrays.copyOf(secondArray, size);
+        return array = secondArray;
     }
 
     public Object[] remove(int index) {
@@ -40,38 +26,30 @@ class MyArrayList {
         int element = 0;
         Object[] secondArray = new Object[size];
         for (int i = 0; i < size; i++) {
-            if (i != index) {
+            if (i == index) {
                 element++;
-                secondArray[i] = array[element];
-            } else {
-                element++;
-                secondArray[i] = array[element];
             }
+            secondArray[i] = array[element];
+            element++;
         }
-        return array = Arrays.copyOf(secondArray, size);
+        return array = secondArray;
     }
 
-    public Object[] clear() {
-        Object[] newArray = new Object[0];
-        return array = Arrays.copyOf(newArray, newArray.length);
+    public void clear() {
+        array = new Object[0];
     }
 
     public int size() {
-        int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            count++;
-        }
-        return count;
+        return array.length;
     }
 
     public Object get(int index) {
-        Object count = 0;
         for (int i = 0; i < array.length; i++) {
             if (i == index) {
-                count = array[i];
+                return array[i];
             }
         }
-        return count;
+        throw new IndexOutOfBoundsException();
     }
 
     @Override
@@ -80,10 +58,12 @@ class MyArrayList {
     }
 
     public static void main(String[] args) {
-        MyArrayList list = new MyArrayList(5);
-        list.fillNumbers();
+        MyArrayList list = new MyArrayList();
         list.add(1);
-        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+
         System.out.println(list);
 
         System.out.print("Remove by index: ");
@@ -92,16 +72,16 @@ class MyArrayList {
 
         System.out.println("Size: " + list.size());
 
-        System.out.println("Get by index: " + list.get(1));
+        System.out.println("Get by index: ");
+        list.get(2);
 
         System.out.print("Clear: ");
         list.clear();
         System.out.println(list);
 
-        MyArrayList list1 = new MyArrayList(5);
-        list1.fillWords();
-        System.out.println(list1);
+        System.out.println("Size " + list.size());
 
+        MyArrayList list1 = new MyArrayList();
         list1.add("Q");
         list1.add("Z");
         System.out.println(list1);
@@ -110,6 +90,7 @@ class MyArrayList {
         list1.remove(0);
         System.out.println(list1);
 
-        System.out.println("Get by index: " + list1.get(1));
+        System.out.println("Get by index: ");
+        list1.get(1);
     }
 }
