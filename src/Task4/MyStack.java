@@ -94,7 +94,7 @@ class MyStack<T> {
         System.out.println(stack);
 
         System.out.println("Size: " + stack.size());
-//        System.out.println("Clear " + Arrays.toString(stack.clear()));
+        System.out.println("Clear " + Arrays.toString(stack.clear()));
 
         MyStack<String> stack1 = new MyStack<>();
         stack1.push("A");
@@ -106,11 +106,6 @@ class MyStack<T> {
         stack1.remove(1);
         System.out.println(stack1);
         System.out.println("Get first element from stack: " + stack1.peek());
-//        System.out.println("Clear " + Arrays.toString(stack.clear()));
-
-        Deque<Integer> deque = new ArrayDeque<>();
-        deque.clear();
-        deque.peek();
-        deque.poll();
+        System.out.println("Clear " + Arrays.toString(stack.clear()));
     }
 }
