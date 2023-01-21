@@ -3,14 +3,14 @@ package Task1;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class MyArrayList {
+class MyArrayList<T> {
     private Object[] array;
 
     MyArrayList() {
         array = new Object[0];
     }
 
-    public Object[] add(Object value) {
+    public Object[] add(T value) {
         int size = array.length;
         size++;
         Object[] secondArray = Arrays.copyOf(array, size);
@@ -58,7 +58,7 @@ class MyArrayList {
     }
 
     public static void main(String[] args) {
-        MyArrayList list = new MyArrayList();
+        MyArrayList<Integer> list = new MyArrayList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -81,7 +81,7 @@ class MyArrayList {
 
         System.out.println("Size " + list.size());
 
-        MyArrayList list1 = new MyArrayList();
+        MyArrayList<String> list1 = new MyArrayList<>();
         list1.add("Q");
         list1.add("Z");
         System.out.println(list1);
