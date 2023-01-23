@@ -1,11 +1,11 @@
 package Task2;
 
-class MyLinkedList<T> {
+public class MyLinkedList<T> {
     Nodes<T> head;
 
     int counter = 0;
 
-    MyLinkedList() {
+    public MyLinkedList() {
         head = null;
     }
 
@@ -90,37 +90,5 @@ class MyLinkedList<T> {
             head = null;
             counter--;
         }
-    }
-
-    public static void main(String[] args) {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        System.out.println(list);
-        System.out.println("Size: " + list.size());
-
-        System.out.println("Get by index: " + list.get(0));
-
-        System.out.println("Remove by index: " + list.remove(2));
-        System.out.println(list);
-
-        System.out.print("Clear: ");
-        list.clear();
-        System.out.println(list);
-
-        MyLinkedList<String> list1 = new MyLinkedList<>();
-        list1.add("A");
-        list1.add("B");
-        list1.add("C");
-        System.out.println(list1);
-
-        System.out.println("Remove by index: " + list1.remove(2));
-        System.out.println(list1);
-
-        System.out.print("Clear: ");
-        list1.clear();
-
-        System.out.println("Size: " + list1.size());
     }
 }

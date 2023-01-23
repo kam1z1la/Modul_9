@@ -4,11 +4,11 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 
-class MyStack<T> {
+public class MyStack<T> {
 
     Object[] array;
 
-    MyStack() {
+    public MyStack() {
         array = new Object[0];
     }
 
@@ -68,44 +68,5 @@ class MyStack<T> {
     @Override
     public String toString() {
         return Arrays.toString(array);
-    }
-
-    public static void main(String[] args) {
-        MyStack<Integer> stack = new MyStack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-        stack.push(6);
-
-        System.out.println(stack);
-        System.out.println("Remove by index from stack: ");
-        stack.remove(1);
-        System.out.println(stack);
-        System.out.println("Get first element from stack: " + stack.peek());
-
-        System.out.println("Remove by index from stack: ");
-        stack.remove(0);
-        System.out.println(stack);
-        System.out.println(stack.peek());
-
-        System.out.println("Get first element and remove from stack: " + stack.pop());
-        System.out.println(stack);
-
-        System.out.println("Size: " + stack.size());
-        System.out.println("Clear " + Arrays.toString(stack.clear()));
-
-        MyStack<String> stack1 = new MyStack<>();
-        stack1.push("A");
-        stack1.push("B");
-        stack1.push("D");
-        stack1.push("C");
-
-        System.out.println("Remove by index from stack: ");
-        stack1.remove(1);
-        System.out.println(stack1);
-        System.out.println("Get first element from stack: " + stack1.peek());
-        System.out.println("Clear " + Arrays.toString(stack.clear()));
     }
 }

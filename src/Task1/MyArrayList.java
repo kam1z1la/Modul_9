@@ -1,12 +1,11 @@
 package Task1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
-class MyArrayList<T> {
+public class MyArrayList<T> {
     private Object[] array;
 
-    MyArrayList() {
+    public MyArrayList() {
         array = new Object[0];
     }
 
@@ -55,42 +54,5 @@ class MyArrayList<T> {
     @Override
     public String toString() {
         return Arrays.toString(array);
-    }
-
-    public static void main(String[] args) {
-        MyArrayList<Integer> list = new MyArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-
-        System.out.println(list);
-
-        System.out.print("Remove by index: ");
-        list.remove(0);
-        System.out.println(list);
-
-        System.out.println("Size: " + list.size());
-
-        System.out.println("Get by index: ");
-        list.get(2);
-
-        System.out.print("Clear: ");
-        list.clear();
-        System.out.println(list);
-
-        System.out.println("Size " + list.size());
-
-        MyArrayList<String> list1 = new MyArrayList<>();
-        list1.add("Q");
-        list1.add("Z");
-        System.out.println(list1);
-
-        System.out.print("Remove by index: ");
-        list1.remove(0);
-        System.out.println(list1);
-
-        System.out.println("Get by index: ");
-        list1.get(1);
     }
 }
