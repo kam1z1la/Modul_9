@@ -28,6 +28,13 @@ class MyHashMap<K, V> {
 
     public void put(K key, V value) {
         index = key.hashCode() % size - 1;
+
+        if(table == null) {
+            table = new Nodes[size];
+            if(index == -1)
+                index = key.hashCode() % size;
+        }
+
         if (length <= size && index >= 0) {
 
             Nodes<K, V> firstTable = new Nodes<>(key, value);
@@ -50,9 +57,11 @@ class MyHashMap<K, V> {
             size *= 2;
             Nodes<K, V>[] newTable = new Nodes[size];
             for (int i = 0; i < size / 2; i++) {
-                if (table[i] != null) {
+                if(table[i] == null) {
+                    table = newTable;
+                    put(key, value);
+               } else
                     newTable[i] = table[i];
-                }
             }
             table = newTable;
             put(key, value);
@@ -72,10 +81,6 @@ class MyHashMap<K, V> {
         return value;
     }
 
-    public Nodes<K, V> getBacked(Nodes<K, V> removeTable) {
-        return removeTable;
-    }
-
     public  Object remove(K key){
         Nodes<K, V> removeTable = null;
         index = key.hashCode() % size - 1;
@@ -91,7 +96,6 @@ class MyHashMap<K, V> {
     }
 
     public Nodes<K, V>[] clear() {
-        size = 0;
         length = 0;
         return table = null;
     }
@@ -127,6 +131,9 @@ class MyHashMap<K, V> {
         System.out.println(hashMap.remove(1));
         System.out.println(hashMap);
         hashMap.clear();
+        for (int i = 0; i < 100; i++) {
+            hashMap.put(i, "test + " + i);
+        }
         System.out.println(hashMap);
     }
 }
