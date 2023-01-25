@@ -29,9 +29,9 @@ class MyHashMap<K, V> {
     public void put(K key, V value) {
         index = key.hashCode() % size - 1;
 
-        if(table == null) {
+        if (table == null) {
             table = new Nodes[size];
-            if(index == -1)
+            if (index == -1)
                 index = key.hashCode() % size;
         }
 
@@ -57,10 +57,10 @@ class MyHashMap<K, V> {
             size *= 2;
             Nodes<K, V>[] newTable = new Nodes[size];
             for (int i = 0; i < size / 2; i++) {
-                if(table[i] == null) {
+                if (table[i] == null) {
                     table = newTable;
                     put(key, value);
-               } else
+                } else
                     newTable[i] = table[i];
             }
             table = newTable;
@@ -81,18 +81,19 @@ class MyHashMap<K, V> {
         return value;
     }
 
-    public  Object remove(K key){
+    public Object remove(K key) {
         Nodes<K, V> removeTable = null;
         index = key.hashCode() % size - 1;
         Nodes<K, V> secondTable = table[index];
-            if (secondTable.getKey().equals(key)) {
-                removeTable = table[index];
-                table[index] = null;
+        if (secondTable.getKey().equals(key)) {
+            removeTable = table[index];
+            table[index] = null;
         }
         return removeTable.getKey() + "=" + removeTable.getValue();
     }
+
     public int size() {
-        return size;
+        return length + 1;
     }
 
     public Nodes<K, V>[] clear() {
@@ -103,9 +104,9 @@ class MyHashMap<K, V> {
     @Override
     public String toString() {
         StringBuilder write = new StringBuilder();
-        if (table == null){
+        if (table == null) {
             write.append("{").append("}");
-            return  write.toString();
+            return write.toString();
         }
         for (int i = 0; i < size; i++) {
             Nodes<K, V> secondTable = table[i];
@@ -135,5 +136,6 @@ class MyHashMap<K, V> {
             hashMap.put(i, "test + " + i);
         }
         System.out.println(hashMap);
+        System.out.println(hashMap.size());
     }
 }
